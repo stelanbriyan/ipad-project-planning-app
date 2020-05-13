@@ -14,6 +14,7 @@
 		5ADFD304246BD70E00E31FEB /* ipad_project_planning_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD302246BD70E00E31FEB /* ipad_project_planning_app.xcdatamodeld */; };
 		5ADFD306246BD71100E31FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFD305246BD71100E31FEB /* Assets.xcassets */; };
 		5ADFD309246BD71100E31FEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFD307246BD71100E31FEB /* LaunchScreen.storyboard */; };
+		5ADFD315246BE00C00E31FEB /* AddProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD314246BE00C00E31FEB /* AddProjectTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		5ADFD305246BD71100E31FEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5ADFD308246BD71100E31FEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5ADFD30A246BD71100E31FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5ADFD314246BE00C00E31FEB /* AddProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				5ADFD307246BD71100E31FEB /* LaunchScreen.storyboard */,
 				5ADFD30A246BD71100E31FEB /* Info.plist */,
 				5ADFD302246BD70E00E31FEB /* ipad_project_planning_app.xcdatamodeld */,
+				5ADFD314246BE00C00E31FEB /* AddProjectTableViewController.swift */,
 			);
 			path = "ipad-project-planning-app";
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ADFD304246BD70E00E31FEB /* ipad_project_planning_app.xcdatamodeld in Sources */,
+				5ADFD315246BE00C00E31FEB /* AddProjectTableViewController.swift in Sources */,
 				5ADFD2FE246BD70E00E31FEB /* ViewController.swift in Sources */,
 				5ADFD2FA246BD70E00E31FEB /* AppDelegate.swift in Sources */,
 				5ADFD2FC246BD70E00E31FEB /* SceneDelegate.swift in Sources */,
