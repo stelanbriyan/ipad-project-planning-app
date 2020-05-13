@@ -75,7 +75,6 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstItem="6c7-m8-TUZ" firstAttribute="leading" secondItem="jRX-Ob-7Ne" secondAttribute="leadingMargin" id="2aC-tO-1re"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="NZL-RN-Vci" secondAttribute="trailing" id="44X-UE-PUw"/>
@@ -118,9 +117,16 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Project" id="912-rp-vEo">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="6MS-Lj-SXh"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="ZC8-qf-RQd"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="ZC8-qf-RQd">
+                            <connections>
+                                <action selector="save:" destination="a44-6L-sMt" id="QTp-Al-nsu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="projectDate" destination="nRN-vg-COf" id="TGF-T0-Mue"/>
+                        <outlet property="projectDescription" destination="NZL-RN-Vci" id="7H7-lS-zLj"/>
+                        <outlet property="projectName" destination="6c7-m8-TUZ" id="TMe-QQ-GNM"/>
                         <outlet property="tableView" destination="oqM-uw-4Kd" id="Onm-Tj-l07"/>
                     </connections>
                 </tableViewController>

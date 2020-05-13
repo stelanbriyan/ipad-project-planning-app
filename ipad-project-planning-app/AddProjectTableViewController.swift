@@ -10,10 +10,21 @@ import UIKit
 
 class AddProjectTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UITextViewDelegate {
 
+    
+    @IBOutlet weak var projectName: UITextField!
+    @IBOutlet weak var projectDate: UIDatePicker!
+    @IBOutlet weak var projectDescription: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    @IBAction func save(_ sender: Any) {
+        
+        
+        
+    }
+    
 }
 
 
@@ -25,7 +36,6 @@ extension AddProjectTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        print("AA")
         if indexPath.section == 1 && indexPath.row == 0 {
             return 200.0
         }
