@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class AddProjectTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UITextViewDelegate {
-
+    var projects: [NSManagedObject] = []
     
     @IBOutlet weak var projectName: UITextField!
     @IBOutlet weak var projectDate: UIDatePicker!
@@ -21,7 +22,32 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
     
     @IBAction func save(_ sender: Any) {
         
+        let name =  projectName.text
+        let note = projectDescription.text
+        let date = projectDate.date
         
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+          appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Project", in: managedContext)!
+        
+        let project = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        project.setValue(name, forKeyPath: "name")
+        project.setValue(note, forKeyPath: "note")
+        project.setValue(date, forKeyPath: "date")
+        print(project)
+        do {
+            try managedContext.save()
+            projects.append(project)
+        } catch let error as NSError {
+          print("Could not save. \(error), \(error.userInfo)")
+        }
         
     }
     

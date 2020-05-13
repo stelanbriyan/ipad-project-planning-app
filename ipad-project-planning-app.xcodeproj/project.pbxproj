@@ -15,6 +15,8 @@
 		5ADFD306246BD71100E31FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFD305246BD71100E31FEB /* Assets.xcassets */; };
 		5ADFD309246BD71100E31FEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFD307246BD71100E31FEB /* LaunchScreen.storyboard */; };
 		5ADFD315246BE00C00E31FEB /* AddProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD314246BE00C00E31FEB /* AddProjectTableViewController.swift */; };
+		5ADFD340246C14D900E31FEB /* ViewProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD33F246C14D900E31FEB /* ViewProjectTableViewController.swift */; };
+		5ADFD347246C17C400E31FEB /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD346246C17C400E31FEB /* ProjectTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		5ADFD308246BD71100E31FEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5ADFD30A246BD71100E31FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ADFD314246BE00C00E31FEB /* AddProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectTableViewController.swift; sourceTree = "<group>"; };
+		5ADFD33F246C14D900E31FEB /* ViewProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectTableViewController.swift; sourceTree = "<group>"; };
+		5ADFD346246C17C400E31FEB /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 		5ADFD2F8246BD70E00E31FEB /* ipad-project-planning-app */ = {
 			isa = PBXGroup;
 			children = (
+				5ADFD341246C16F300E31FEB /* cell */,
+				5ADFD33C246BF68200E31FEB /* model */,
 				5ADFD2F9246BD70E00E31FEB /* AppDelegate.swift */,
 				5ADFD2FB246BD70E00E31FEB /* SceneDelegate.swift */,
 				5ADFD2FD246BD70E00E31FEB /* ViewController.swift */,
@@ -69,8 +75,24 @@
 				5ADFD30A246BD71100E31FEB /* Info.plist */,
 				5ADFD302246BD70E00E31FEB /* ipad_project_planning_app.xcdatamodeld */,
 				5ADFD314246BE00C00E31FEB /* AddProjectTableViewController.swift */,
+				5ADFD33F246C14D900E31FEB /* ViewProjectTableViewController.swift */,
 			);
 			path = "ipad-project-planning-app";
+			sourceTree = "<group>";
+		};
+		5ADFD33C246BF68200E31FEB /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		5ADFD341246C16F300E31FEB /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				5ADFD346246C17C400E31FEB /* ProjectTableViewCell.swift */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,7 +167,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ADFD304246BD70E00E31FEB /* ipad_project_planning_app.xcdatamodeld in Sources */,
+				5ADFD347246C17C400E31FEB /* ProjectTableViewCell.swift in Sources */,
 				5ADFD315246BE00C00E31FEB /* AddProjectTableViewController.swift in Sources */,
+				5ADFD340246C14D900E31FEB /* ViewProjectTableViewController.swift in Sources */,
 				5ADFD2FE246BD70E00E31FEB /* ViewController.swift in Sources */,
 				5ADFD2FA246BD70E00E31FEB /* AppDelegate.swift in Sources */,
 				5ADFD2FC246BD70E00E31FEB /* SceneDelegate.swift in Sources */,

@@ -9,19 +9,45 @@
         <!--My Projects-->
         <scene sceneID="8Ne-g6-M3e">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="9X7-9n-Po1" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="9X7-9n-Po1" customClass="ViewProjectTableViewController" customModule="ipad_project_planning_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="654-IR-2RU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iab-s1-c1J">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProjectCell" rowHeight="103" id="iab-s1-c1J" customClass="ProjectTableViewCell" customModule="ipad_project_planning_app" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iab-s1-c1J" id="izx-Jb-AvX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="103"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40e-pc-pFB">
+                                            <rect key="frame" x="16" y="21" width="343" height="32.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7B3-gE-y5R">
+                                            <rect key="frame" x="16" y="63.5" width="343" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="40e-pc-pFB" firstAttribute="leading" secondItem="izx-Jb-AvX" secondAttribute="leadingMargin" id="2OE-98-JC2"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="7B3-gE-y5R" secondAttribute="trailing" id="4Fc-QX-dAF"/>
+                                        <constraint firstItem="7B3-gE-y5R" firstAttribute="leading" secondItem="izx-Jb-AvX" secondAttribute="leadingMargin" id="4Lz-hZ-iCc"/>
+                                        <constraint firstItem="7B3-gE-y5R" firstAttribute="top" secondItem="40e-pc-pFB" secondAttribute="bottom" constant="10" id="MdA-qz-pma"/>
+                                        <constraint firstItem="40e-pc-pFB" firstAttribute="top" secondItem="izx-Jb-AvX" secondAttribute="topMargin" constant="10" id="hOO-y2-nCR"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="40e-pc-pFB" secondAttribute="trailing" id="qVq-L8-823"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="date" destination="7B3-gE-y5R" id="aP3-S6-c1Z"/>
+                                    <outlet property="name" destination="40e-pc-pFB" id="utV-9F-fDX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -44,7 +70,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpt-hH-tly" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047" y="233"/>
+            <point key="canvasLocation" x="1046.7336683417086" y="232.37410071942449"/>
         </scene>
         <!--Add Project-->
         <scene sceneID="yIZ-ph-f4i">
