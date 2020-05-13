@@ -17,6 +17,8 @@
 		5ADFD315246BE00C00E31FEB /* AddProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD314246BE00C00E31FEB /* AddProjectTableViewController.swift */; };
 		5ADFD340246C14D900E31FEB /* ViewProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD33F246C14D900E31FEB /* ViewProjectTableViewController.swift */; };
 		5ADFD347246C17C400E31FEB /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD346246C17C400E31FEB /* ProjectTableViewCell.swift */; };
+		5ADFD349246C4B0000E31FEB /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD348246C4B0000E31FEB /* ProjectDetailViewController.swift */; };
+		5ADFD34B246C5D6D00E31FEB /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD34A246C5D6D00E31FEB /* TaskTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		5ADFD314246BE00C00E31FEB /* AddProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectTableViewController.swift; sourceTree = "<group>"; };
 		5ADFD33F246C14D900E31FEB /* ViewProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectTableViewController.swift; sourceTree = "<group>"; };
 		5ADFD346246C17C400E31FEB /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		5ADFD348246C4B0000E31FEB /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
+		5ADFD34A246C5D6D00E31FEB /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 				5ADFD302246BD70E00E31FEB /* ipad_project_planning_app.xcdatamodeld */,
 				5ADFD314246BE00C00E31FEB /* AddProjectTableViewController.swift */,
 				5ADFD33F246C14D900E31FEB /* ViewProjectTableViewController.swift */,
+				5ADFD348246C4B0000E31FEB /* ProjectDetailViewController.swift */,
 			);
 			path = "ipad-project-planning-app";
 			sourceTree = "<group>";
@@ -91,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				5ADFD346246C17C400E31FEB /* ProjectTableViewCell.swift */,
+				5ADFD34A246C5D6D00E31FEB /* TaskTableViewCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -168,11 +174,13 @@
 			files = (
 				5ADFD304246BD70E00E31FEB /* ipad_project_planning_app.xcdatamodeld in Sources */,
 				5ADFD347246C17C400E31FEB /* ProjectTableViewCell.swift in Sources */,
+				5ADFD34B246C5D6D00E31FEB /* TaskTableViewCell.swift in Sources */,
 				5ADFD315246BE00C00E31FEB /* AddProjectTableViewController.swift in Sources */,
 				5ADFD340246C14D900E31FEB /* ViewProjectTableViewController.swift in Sources */,
 				5ADFD2FE246BD70E00E31FEB /* ViewController.swift in Sources */,
 				5ADFD2FA246BD70E00E31FEB /* AppDelegate.swift in Sources */,
 				5ADFD2FC246BD70E00E31FEB /* SceneDelegate.swift in Sources */,
+				5ADFD349246C4B0000E31FEB /* ProjectDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

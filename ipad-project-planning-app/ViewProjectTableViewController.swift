@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ViewProjectTableViewController: UITableViewController {
+class ViewProjectTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate {
     
     let dateFormatter : DateFormatter = DateFormatter()
     var projects: [Any] = []
@@ -42,6 +42,20 @@ class ViewProjectTableViewController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        selectRow();
+    }
+    
+    func selectRow(){
+        let indexPath = IndexPath(row: 0, section: 0)
+        
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
+        if tableView.indexPathForSelectedRow != nil {
+            let project = projects[indexPath.row]
+            self.performSegue(withIdentifier: "showProject", sender: project)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return projects.count
     }
@@ -64,6 +78,27 @@ class ViewProjectTableViewController: UITableViewController {
             cell.date.text = ""
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
+        if tableView.indexPathForSelectedRow != nil {
+            let project = projects[indexPath.row]
+            self.performSegue(withIdentifier: "showProject", sender: project)
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if segue.identifier == "showProject" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let project = projects[indexPath.row]
+                let controller = (segue.destination as! UINavigationController).topViewController as! ProjectDetailViewController
+                controller.project = project as? NSManagedObject
+            }
+        }
+        
     }
     
 }
