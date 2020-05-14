@@ -89,6 +89,7 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         
         
         var daysRemaining: Int = 0
+        
         for task in tasks {
             
             let startDate = (task as AnyObject).value(forKey: "startDate")
