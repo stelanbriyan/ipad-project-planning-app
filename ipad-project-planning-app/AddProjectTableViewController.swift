@@ -38,6 +38,17 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
         
         let project = NSManagedObject(entity: entity, insertInto: managedContext)
         
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = entity
+        
+        do {
+            let projects = try managedContext.fetch(fetchRequest)
+            project.setValue(projects.count, forKey: "projectNum")
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+        
         project.setValue(name, forKeyPath: "name")
         project.setValue(note, forKeyPath: "note")
         project.setValue(date, forKeyPath: "date")
@@ -49,6 +60,7 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
           print("Could not save. \(error), \(error.userInfo)")
         }
         
+        dismiss(animated: true, completion: nil)
     }
 }
 
