@@ -19,6 +19,10 @@ class ViewProjectTableViewController: UITableViewController, NSFetchedResultsCon
         
         dateFormatter.dateFormat = "dd MMM yyyy HH:mm"
         
+        loadData()
+    }
+    
+    func loadData(){
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -36,10 +40,13 @@ class ViewProjectTableViewController: UITableViewController, NSFetchedResultsCon
         
         do {
             projects = try managedContext.fetch(fetchRequest)
+            print(projects.count)
         } catch {
             let fetchError = error as NSError
             print(fetchError)
         }
+        
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,8 +55,9 @@ class ViewProjectTableViewController: UITableViewController, NSFetchedResultsCon
     
     func selectRow(){
         let indexPath = IndexPath(row: 0, section: 0)
-        
-        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
+        if( tableView.numberOfRows(inSection: 0) > 0){
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
+        }
         if tableView.indexPathForSelectedRow != nil {
             let project = projects[indexPath.row]
             self.performSegue(withIdentifier: "showProject", sender: project)
@@ -90,13 +98,19 @@ class ViewProjectTableViewController: UITableViewController, NSFetchedResultsCon
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        
         if segue.identifier == "showProject" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let project = projects[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! ProjectDetailViewController
                 controller.project = project as? NSManagedObject
+                controller.mainDelegate = self
             }
+        }
+        
+        if segue.identifier == "AddProjectPopup" {
+            let controller = (segue.destination as! UINavigationController).topViewController as! AddProjectTableViewController
+            controller.mainDelegate = self
         }
         
     }

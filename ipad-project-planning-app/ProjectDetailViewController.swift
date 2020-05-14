@@ -12,10 +12,12 @@ import CoreData
 class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
     var project : NSManagedObject? = nil
+    
     @IBOutlet weak var projectName: UILabel!
     @IBOutlet weak var descField: UILabel!
-    
     @IBOutlet weak var taskTable: UITableView!
+    var mainDelegate: ViewProjectTableViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +26,7 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         if ((project?.value(forKey: "note")) != nil) {
             descField.text = project?.value(forKey: "note") as? String
         }
-
+        
         taskTable.delegate = self
         taskTable.dataSource = self
     }
@@ -35,6 +37,23 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
+    }
+    
+    @IBAction func removeProject(_ sender: Any) {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        do {
+            managedContext.delete(project!)
+            try managedContext.save();
+        }catch{}
+        
+        mainDelegate?.loadData();
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -59,7 +59,7 @@
                     <navigationItem key="navigationItem" title="My Projects" id="At2-f6-tec">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="2DU-S5-oD7">
                             <connections>
-                                <segue destination="66U-GU-1Vz" kind="popoverPresentation" popoverAnchorBarButtonItem="2DU-S5-oD7" id="Ie5-EX-YfJ">
+                                <segue destination="66U-GU-1Vz" kind="popoverPresentation" identifier="AddProjectPopup" popoverAnchorBarButtonItem="2DU-S5-oD7" id="Ie5-EX-YfJ">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -324,6 +324,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Project Details" id="rF0-x9-us8">
                         <barButtonItem key="leftBarButtonItem" title="Add Task" style="plain" id="ydo-Cb-sNb"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="trash" catalog="system" style="plain" id="mR8-SJ-L7z">
+                            <connections>
+                                <action selector="removeProject:" destination="r4E-TW-CeB" id="yh9-hh-tP5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descField" destination="Z3t-Rh-p4Q" id="Weg-xQ-MHd"/>
@@ -352,4 +357,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="VmB-bi-XtE"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="trash" catalog="system" width="121" height="128"/>
+    </resources>
 </document>

@@ -15,6 +15,7 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
     @IBOutlet weak var projectName: UITextField!
     @IBOutlet weak var projectDate: UIDatePicker!
     @IBOutlet weak var projectDescription: UITextField!
+    var mainDelegate: ViewProjectTableViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,21 +39,10 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
         
         let project = NSManagedObject(entity: entity, insertInto: managedContext)
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
-        fetchRequest.entity = entity
-        
-        do {
-            let projects = try managedContext.fetch(fetchRequest)
-            project.setValue(projects.count, forKey: "projectNum")
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }
-        
+        project.setValue(Int64((Date().timeIntervalSince1970 * 1000.0).rounded()), forKey: "projectNum")
         project.setValue(name, forKeyPath: "name")
         project.setValue(note, forKeyPath: "note")
         project.setValue(date, forKeyPath: "date")
-        print(project)
         do {
             try managedContext.save()
             projects.append(project)
@@ -61,6 +51,9 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
         }
         
         dismiss(animated: true, completion: nil)
+        
+        mainDelegate?.loadData()
+
     }
 }
 
