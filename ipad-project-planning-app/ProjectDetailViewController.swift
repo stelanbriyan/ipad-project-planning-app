@@ -12,7 +12,9 @@ import CoreData
 class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
     var project : NSManagedObject? = nil
-    
+    var tasks: [Any] = []
+    let dateFormatter : DateFormatter = DateFormatter()
+
     @IBOutlet weak var projectName: UILabel!
     @IBOutlet weak var descField: UILabel!
     @IBOutlet weak var taskTable: UITableView!
@@ -27,6 +29,7 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        dateFormatter.dateFormat = "dd MMM yyyy HH:mm"
         projectName.text = project?.value(forKey: "name") as? String
         
         if ((project?.value(forKey: "note")) != nil) {
@@ -60,10 +63,42 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
             self.dayProgress?.progress = CGFloat(daysRemaining) / 100
             self.dayProgress?.isHidden = false
         }
+        
+        loadData()
+    }
+    
+    func loadData(){
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        
+        let predicate = NSPredicate(format: "projectNum = %@", project?.value(forKey: "projectNum") as! CVarArg)
+        fetchRequest.predicate = predicate
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entity(forEntityName: "Task", in: managedContext)
+        
+        // Configure Fetch Request
+        fetchRequest.entity = entityDescription
+        
+        do {
+            tasks = try managedContext.fetch(fetchRequest)
+            print(tasks.count)
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+        
+        taskTable.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return tasks.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -89,10 +124,41 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskTableViewCell
+        let task: NSManagedObject? = tasks[indexPath.row] as? NSManagedObject
         
         let num = indexPath.row + 1
         cell.taskNumber.text = "Task " + String(num)
+        cell.taskName.text =  (((task?.value(forKey: "name") as? String))! + " (DUE: " + dateFormatter.string(from: task?.value(forKey: "date") as! Date) + ")").uppercased()
+        cell.taskNote.text = task?.value(forKey: "note") as? String
+        
+        let startDate = task?.value(forKey: "startDate")
+        let dueDate = task?.value(forKey: "date")
+        
+        let daysRemaining = self.dateUtils.getRemainingTimePercentage(startDate! as! Date, end: dueDate! as! Date)
+       
+        DispatchQueue.main.async {
+            let colours = self.colours.getProgressGradient(daysRemaining)
+            cell.circleProgress?.customTitle = "\(daysRemaining)%"
+            cell.circleProgress?.customSubtitle = ""
+            cell.circleProgress?.startGradientColor = colours[0]
+            cell.circleProgress?.endGradientColor = colours[1]
+            cell.circleProgress?.progress = CGFloat(daysRemaining) / 100
+            cell.progressBar?.isHidden = false
+        }
+        
+        cell.progressBar.progress = Float(CGFloat(daysRemaining) / 100)
+        
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "AddTaskPop" {
+            let controller = (segue.destination as! UINavigationController).topViewController as! AddTaskTableViewController
+            controller.projectNum = self.project?.value(forKey: "projectNum") as? Int
+            controller.delegate = self
+        }
+        
     }
     
 }

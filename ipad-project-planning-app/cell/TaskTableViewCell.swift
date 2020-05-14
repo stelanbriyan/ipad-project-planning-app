@@ -15,10 +15,12 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var taskNote: UILabel!
     @IBOutlet weak var taskNumber: UILabel!
     
+    @IBOutlet weak var circleProgress: CircularProgressBar!
     override func awakeFromNib() {
         super.awakeFromNib()
 
         progressBar.transform = progressBar.transform.scaledBy(x: 1, y: 10)
+        taskName.font = UIFont.boldSystemFont(ofSize: 16.0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
