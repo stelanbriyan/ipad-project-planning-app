@@ -19,6 +19,7 @@
 		5ADFD347246C17C400E31FEB /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD346246C17C400E31FEB /* ProjectTableViewCell.swift */; };
 		5ADFD349246C4B0000E31FEB /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD348246C4B0000E31FEB /* ProjectDetailViewController.swift */; };
 		5ADFD34B246C5D6D00E31FEB /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD34A246C5D6D00E31FEB /* TaskTableViewCell.swift */; };
+		5ADFD354246D2F0E00E31FEB /* AddTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD353246D2F0E00E31FEB /* AddTaskTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		5ADFD346246C17C400E31FEB /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		5ADFD348246C4B0000E31FEB /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
 		5ADFD34A246C5D6D00E31FEB /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		5ADFD353246D2F0E00E31FEB /* AddTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				5ADFD314246BE00C00E31FEB /* AddProjectTableViewController.swift */,
 				5ADFD33F246C14D900E31FEB /* ViewProjectTableViewController.swift */,
 				5ADFD348246C4B0000E31FEB /* ProjectDetailViewController.swift */,
+				5ADFD353246D2F0E00E31FEB /* AddTaskTableViewController.swift */,
 			);
 			path = "ipad-project-planning-app";
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				5ADFD347246C17C400E31FEB /* ProjectTableViewCell.swift in Sources */,
 				5ADFD34B246C5D6D00E31FEB /* TaskTableViewCell.swift in Sources */,
 				5ADFD315246BE00C00E31FEB /* AddProjectTableViewController.swift in Sources */,
+				5ADFD354246D2F0E00E31FEB /* AddTaskTableViewController.swift in Sources */,
 				5ADFD340246C14D900E31FEB /* ViewProjectTableViewController.swift in Sources */,
 				5ADFD2FE246BD70E00E31FEB /* ViewController.swift in Sources */,
 				5ADFD2FA246BD70E00E31FEB /* AppDelegate.swift in Sources */,
