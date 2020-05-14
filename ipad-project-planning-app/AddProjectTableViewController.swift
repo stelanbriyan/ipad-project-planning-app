@@ -19,6 +19,8 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        projectDate.minimumDate = NSDate() as Date
     }
     
     @IBAction func save(_ sender: Any) {
