@@ -10,11 +10,15 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell {
 
-    
+    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var taskName: UILabel!
+    @IBOutlet weak var taskNote: UILabel!
+    @IBOutlet weak var taskNumber: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        progressBar.transform = progressBar.transform.scaledBy(x: 1, y: 10)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

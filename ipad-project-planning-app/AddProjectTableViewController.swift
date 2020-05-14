@@ -50,9 +50,7 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
         }
         
     }
-    
 }
-
 
 extension AddProjectTableViewController {
     
