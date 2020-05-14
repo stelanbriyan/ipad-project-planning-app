@@ -18,6 +18,11 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
     @IBOutlet weak var taskTable: UITableView!
     var mainDelegate: ViewProjectTableViewController?
     
+    let colours: Colours = Colours()
+    @IBOutlet weak var completeProgress: CircularProgressBar!
+    
+    @IBOutlet weak var dayProgress: CircularProgressBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +34,28 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         
         taskTable.delegate = self
         taskTable.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        DispatchQueue.main.async {
+            let colours = self.colours.getProgressGradient(40)
+            self.completeProgress?.customSubtitle = "Completed"
+            self.completeProgress?.startGradientColor = colours[0]
+            self.completeProgress?.endGradientColor = colours[1]
+            self.completeProgress?.progress = CGFloat(40) / 100
+            self.completeProgress?.isHidden = false
+        }
+        
+        DispatchQueue.main.async {
+            let colours = self.colours.getProgressGradient(20)
+            self.dayProgress?.customTitle = "\(20)"
+            self.dayProgress?.customSubtitle = "Days Left"
+            self.dayProgress?.startGradientColor = colours[0]
+            self.dayProgress?.endGradientColor = colours[1]
+            self.dayProgress?.progress = CGFloat(20) / 100
+            self.dayProgress?.isHidden = false
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
