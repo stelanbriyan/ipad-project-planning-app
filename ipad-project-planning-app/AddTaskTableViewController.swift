@@ -13,6 +13,7 @@ class AddTaskTableViewController: UITableViewController {
     
     var tasks: [NSManagedObject] = []
     var projectNum: Int? = nil
+    var maxDate: Date? = nil
     var delegate: ProjectDetailViewController? = nil
     
     @IBOutlet weak var taskName: UITextField!
@@ -23,6 +24,9 @@ class AddTaskTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dueDate.minimumDate = NSDate() as Date
+        dueDate.maximumDate = maxDate
     }
     
     @IBAction func saveTask(_ sender: Any) {

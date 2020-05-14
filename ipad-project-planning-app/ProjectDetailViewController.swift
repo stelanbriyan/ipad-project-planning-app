@@ -15,6 +15,7 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
     var tasks: [Any] = []
     let dateFormatter : DateFormatter = DateFormatter()
 
+    @IBOutlet weak var moduleName: UILabel!
     @IBOutlet weak var projectName: UILabel!
     @IBOutlet weak var descField: UILabel!
     @IBOutlet weak var taskTable: UITableView!
@@ -31,6 +32,7 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         
         dateFormatter.dateFormat = "dd MMM yyyy HH:mm"
         projectName.text = project?.value(forKey: "name") as? String
+        moduleName.text = project?.value(forKey: "moduleName") as? String
         
         if ((project?.value(forKey: "note")) != nil) {
             descField.text = project?.value(forKey: "note") as? String
@@ -148,6 +150,10 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         
         cell.progressBar.progress = Float(CGFloat(daysRemaining) / 100)
         
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 230/255, alpha: 1.00)
+        cell.selectedBackgroundView = bgColorView
+
         return cell
     }
     
@@ -157,6 +163,7 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
             let controller = (segue.destination as! UINavigationController).topViewController as! AddTaskTableViewController
             controller.projectNum = self.project?.value(forKey: "projectNum") as? Int
             controller.delegate = self
+            controller.maxDate = project?.value(forKey: "date") as! Date
         }
         
     }
