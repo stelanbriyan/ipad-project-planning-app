@@ -31,7 +31,7 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         super.viewDidLoad()
         
         dateFormatter.dateFormat = "dd MMM yyyy HH:mm"
-        projectName.text = project?.value(forKey: "name") as? String
+        projectName.text = (project?.value(forKey: "name") as? String)?.uppercased()
         moduleName.text = project?.value(forKey: "moduleName") as? String
         
         if ((project?.value(forKey: "note")) != nil) {
@@ -46,16 +46,7 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         
         let daysRemaining = self.dateUtils.getRemainingTimePercentage(startDate! as! Date, end: dueDate! as! Date)
         let daysRemainingCount = self.dateUtils.getDateDiff(Date(), end: dueDate as! Date)
-        
-        DispatchQueue.main.async {
-            let colours = self.colours.getProgressGradient(40)
-            self.completeProgress?.customSubtitle = "Completed"
-            self.completeProgress?.startGradientColor = colours[0]
-            self.completeProgress?.endGradientColor = colours[1]
-            self.completeProgress?.progress = CGFloat(40) / 100
-            self.completeProgress?.isHidden = false
-        }
-        
+
         DispatchQueue.main.async {
             let colours = self.colours.getProgressGradient(daysRemaining)
             self.dayProgress?.customTitle = "\(daysRemainingCount)"
@@ -95,6 +86,28 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
             let fetchError = error as NSError
             print(fetchError)
         }
+        
+        
+        var daysRemaining: Int = 0
+        for task in tasks {
+            
+            let startDate = (task as AnyObject).value(forKey: "startDate")
+            let dueDate = (task as AnyObject).value(forKey: "date")
+            
+            daysRemaining += Int(self.dateUtils.getRemainingTimePercentage(startDate! as! Date, end: dueDate! as! Date))
+        }
+        
+        let percentage = daysRemaining / tasks.count
+        
+        DispatchQueue.main.async {
+            let colours = self.colours.getProgressGradient(percentage)
+            self.completeProgress?.customSubtitle = "Completed"
+            self.completeProgress?.startGradientColor = colours[0]
+            self.completeProgress?.endGradientColor = colours[1]
+            self.completeProgress?.progress = CGFloat(percentage) / 100
+            self.completeProgress?.isHidden = false
+        }
+        
         
         taskTable.reloadData()
     }
