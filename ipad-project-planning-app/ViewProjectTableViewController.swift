@@ -69,7 +69,7 @@ class ViewProjectTableViewController: UITableViewController, NSFetchedResultsCon
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 130
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,6 +84,14 @@ class ViewProjectTableViewController: UITableViewController, NSFetchedResultsCon
             cell.date.text = dateFormatter.string(from: date as! Date)
         }else{
             cell.date.text = ""
+        }
+        
+        let moduleName = project.value(forKey: "moduleName")
+        
+        if (moduleName != nil){
+            cell.moduleName.text = project.value(forKey: "moduleName") as? String
+        }else{
+            cell.moduleName.text = ""
         }
         return cell
     }

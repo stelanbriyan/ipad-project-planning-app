@@ -15,6 +15,13 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
     @IBOutlet weak var projectName: UITextField!
     @IBOutlet weak var projectDate: UIDatePicker!
     @IBOutlet weak var projectDescription: UITextField!
+    
+    @IBOutlet weak var moduleName: UITextField!
+    
+    @IBOutlet weak var value: UITextField!
+    
+    @IBOutlet weak var marks: UITextField!
+    
     var mainDelegate: ViewProjectTableViewController?
     
     override func viewDidLoad() {
@@ -45,6 +52,12 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
         project.setValue(name, forKeyPath: "name")
         project.setValue(note, forKeyPath: "note")
         project.setValue(date, forKeyPath: "date")
+        project.setValue(moduleName.text, forKey: "moduleName")
+        
+        let val = value.text!
+        project.setValue(Int(val ), forKey: "value")
+        project.setValue(Int(marks.text ?? "0"), forKey: "mark")
+        
         do {
             try managedContext.save()
             projects.append(project)
@@ -72,9 +85,13 @@ extension AddProjectTableViewController {
         }
         // Make Notes text view bigger: 80
         if indexPath.section == 0 && indexPath.row == 0 {
-            return 150.0
+            return 250.0
         }
         
+        // Make Notes text view bigger: 80
+        if indexPath.section == 2 && indexPath.row == 0 {
+            return 50.0
+        }
         return 0
     }
     
