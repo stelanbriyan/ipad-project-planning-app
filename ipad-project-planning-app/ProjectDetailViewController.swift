@@ -17,6 +17,7 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
     @IBOutlet weak var descField: UILabel!
     @IBOutlet weak var taskTable: UITableView!
     var mainDelegate: ViewProjectTableViewController?
+    var dateUtils: DateUtils = DateUtils()
     
     let colours: Colours = Colours()
     @IBOutlet weak var completeProgress: CircularProgressBar!
@@ -34,9 +35,12 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         
         taskTable.delegate = self
         taskTable.dataSource = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
+        let startDate = project?.value(forKey: "startDate")
+        let dueDate = project?.value(forKey: "date")
+        
+        let daysRemaining = self.dateUtils.getRemainingTimePercentage(startDate! as! Date, end: dueDate! as! Date)
+        let daysRemainingCount = self.dateUtils.getDateDiff(Date(), end: dueDate as! Date)
         
         DispatchQueue.main.async {
             let colours = self.colours.getProgressGradient(40)
@@ -48,12 +52,12 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         }
         
         DispatchQueue.main.async {
-            let colours = self.colours.getProgressGradient(20)
-            self.dayProgress?.customTitle = "\(20)"
+            let colours = self.colours.getProgressGradient(daysRemaining)
+            self.dayProgress?.customTitle = "\(daysRemainingCount)"
             self.dayProgress?.customSubtitle = "Days Left"
             self.dayProgress?.startGradientColor = colours[0]
             self.dayProgress?.endGradientColor = colours[1]
-            self.dayProgress?.progress = CGFloat(20) / 100
+            self.dayProgress?.progress = CGFloat(daysRemaining) / 100
             self.dayProgress?.isHidden = false
         }
     }

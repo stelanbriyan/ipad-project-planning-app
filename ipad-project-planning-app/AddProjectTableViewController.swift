@@ -53,6 +53,7 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
         project.setValue(note, forKeyPath: "note")
         project.setValue(date, forKeyPath: "date")
         project.setValue(moduleName.text, forKey: "moduleName")
+        project.setValue(Date(), forKeyPath: "startDate")
         
         let val = value.text!
         project.setValue(Int(val ), forKey: "value")

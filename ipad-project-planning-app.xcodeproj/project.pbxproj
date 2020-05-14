@@ -22,6 +22,7 @@
 		5ADFD354246D2F0E00E31FEB /* AddTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD353246D2F0E00E31FEB /* AddTaskTableViewController.swift */; };
 		5ADFD356246D330500E31FEB /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD355246D330500E31FEB /* CircularProgressBar.swift */; };
 		5ADFD358246D344600E31FEB /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD357246D344600E31FEB /* Colours.swift */; };
+		5ADFD35A246D6D5C00E31FEB /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFD359246D6D5C00E31FEB /* DateUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		5ADFD353246D2F0E00E31FEB /* AddTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewController.swift; sourceTree = "<group>"; };
 		5ADFD355246D330500E31FEB /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		5ADFD357246D344600E31FEB /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
+		5ADFD359246D6D5C00E31FEB /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				5ADFD353246D2F0E00E31FEB /* AddTaskTableViewController.swift */,
 				5ADFD355246D330500E31FEB /* CircularProgressBar.swift */,
 				5ADFD357246D344600E31FEB /* Colours.swift */,
+				5ADFD359246D6D5C00E31FEB /* DateUtils.swift */,
 			);
 			path = "ipad-project-planning-app";
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				5ADFD304246BD70E00E31FEB /* ipad_project_planning_app.xcdatamodeld in Sources */,
 				5ADFD347246C17C400E31FEB /* ProjectTableViewCell.swift in Sources */,
 				5ADFD34B246C5D6D00E31FEB /* TaskTableViewCell.swift in Sources */,
+				5ADFD35A246D6D5C00E31FEB /* DateUtils.swift in Sources */,
 				5ADFD315246BE00C00E31FEB /* AddProjectTableViewController.swift in Sources */,
 				5ADFD354246D2F0E00E31FEB /* AddTaskTableViewController.swift in Sources */,
 				5ADFD356246D330500E31FEB /* CircularProgressBar.swift in Sources */,
