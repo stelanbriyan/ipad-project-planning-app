@@ -130,21 +130,48 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         return 140
     }
     
-    @IBAction func removeProject(_ sender: Any) {
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
+
+    @IBAction func removeTask(_ sender: Any) {
+        let indexPath =  taskTable.indexPathForSelectedRow
+        
+        if indexPath != nil {
+            let alert = UIAlertController(title: "Remove Task", message: "Are you sure you want to remove selected task?", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                
+                let task = self.tasks[indexPath!.row]
+                
+                guard let appDelegate =
+                    UIApplication.shared.delegate as? AppDelegate else {
+                        return
+                }
+                
+                let managedContext =
+                    appDelegate.persistentContainer.viewContext
+                
+                do {
+                    managedContext.delete(task as! NSManagedObject)
+                    try managedContext.save();
+                }catch{}
+                
+                self.loadData()
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }else{
+            let refreshAlert = UIAlertController(title: "Task is not selected", message: "Please select a task to remove", preferredStyle: UIAlertController.Style.alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                           
+            }))
+            
+            present(refreshAlert, animated: true, completion: nil)
         }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        do {
-            managedContext.delete(project!)
-            try managedContext.save();
-        }catch{}
-        
-        mainDelegate?.loadData();
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

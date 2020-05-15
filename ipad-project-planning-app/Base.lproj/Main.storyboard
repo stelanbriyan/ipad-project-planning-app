@@ -67,11 +67,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Projects" id="At2-f6-tec">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="2DU-S5-oD7">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="2DU-S5-oD7">
                             <connections>
                                 <segue destination="66U-GU-1Vz" kind="popoverPresentation" identifier="AddProjectPopup" popoverAnchorBarButtonItem="2DU-S5-oD7" id="Ie5-EX-YfJ">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="trash" id="pGj-9B-JwI">
+                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="deleteProject:" destination="9X7-9n-Po1" id="q4A-K5-64n"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -469,7 +475,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="trash" catalog="system" style="plain" id="mR8-SJ-L7z">
                             <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="removeProject:" destination="r4E-TW-CeB" id="yh9-hh-tP5"/>
+                                <action selector="removeTask:" destination="r4E-TW-CeB" id="xSY-EN-8mv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

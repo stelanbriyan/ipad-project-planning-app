@@ -49,6 +49,49 @@ class ViewProjectTableViewController: UITableViewController, NSFetchedResultsCon
         tableView.reloadData()
     }
     
+    @IBAction func deleteProject(_ sender: Any) {
+        let indexPath =  tableView.indexPathForSelectedRow
+        
+        if indexPath != nil {
+            let alert = UIAlertController(title: "Remove Project", message: "Are you sure you want to remove selected project?", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                
+                let project = self.projects[indexPath!.row]
+                
+                guard let appDelegate =
+                    UIApplication.shared.delegate as? AppDelegate else {
+                        return
+                }
+                
+                let managedContext =
+                    appDelegate.persistentContainer.viewContext
+                
+                do {
+                    managedContext.delete(project as! NSManagedObject)
+                    try managedContext.save();
+                }catch{}
+                
+                self.loadData()
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }else{
+            let refreshAlert = UIAlertController(title: "Project is not selected", message: "Please select a project to remove", preferredStyle: UIAlertController.Style.alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                           
+            }))
+            
+            present(refreshAlert, animated: true, completion: nil)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         selectRow();
     }
