@@ -219,6 +219,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addToCalendarSwitch" destination="uul-eL-2lT" id="hPn-8n-jEI"/>
                         <outlet property="marks" destination="zha-Hu-3q5" id="EYX-dK-kYk"/>
                         <outlet property="moduleName" destination="u1H-xY-iDo" id="EFs-G2-kXy"/>
                         <outlet property="projectDate" destination="nRN-vg-COf" id="TGF-T0-Mue"/>
@@ -588,6 +589,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addToCalendarSwitch" destination="zaf-Dn-p1g" id="8xm-fM-PPQ"/>
                         <outlet property="dueDate" destination="ZQT-vZ-BVs" id="d85-Dd-hLi"/>
                         <outlet property="notificationSpinner" destination="YUQ-HJ-GGZ" id="dHy-R6-QJu"/>
                         <outlet property="taskName" destination="pPE-nF-SyU" id="2Vs-zC-6bt"/>

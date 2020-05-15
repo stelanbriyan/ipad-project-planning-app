@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import EventKit
 
 class AddProjectTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UITextViewDelegate {
     var projects: [NSManagedObject] = []
@@ -15,6 +16,7 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
     @IBOutlet weak var projectName: UITextField!
     @IBOutlet weak var projectDate: UIDatePicker!
     @IBOutlet weak var projectDescription: UITextField!
+    @IBOutlet weak var addToCalendarSwitch: UISwitch!
     
     @IBOutlet weak var moduleName: UITextField!
     
@@ -66,10 +68,50 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
           print("Could not save. \(error), \(error.userInfo)")
         }
         
+        let eventStore = EKEventStore()
+        var calendarIdentifier = ""
+        
+        if addToCalendarSwitch.isOn {
+            if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
+                eventStore.requestAccess(to: .event, completion: {
+                    granted, error in
+                    calendarIdentifier = self.createEvent(eventStore, title: name!, startDate: Date(), endDate: date)
+                })
+            } else {
+                calendarIdentifier = createEvent(eventStore, title: name!, startDate: Date(), endDate: date)
+            }
+            
+            if calendarIdentifier != "" {
+                print("Added to calendaer")
+            }
+        }
+        
         dismiss(animated: true, completion: nil)
         
         mainDelegate?.loadData()
 
+    }
+    
+    // Creates an event in the EKEventStore
+    func createEvent(_ eventStore: EKEventStore, title: String, startDate: Date, endDate: Date) -> String {
+        let event = EKEvent(eventStore: eventStore)
+        var identifier = ""
+        
+        event.title = title
+        event.startDate = startDate
+        event.endDate = endDate
+        event.calendar = eventStore.defaultCalendarForNewEvents
+        
+        do {
+            try eventStore.save(event, span: .thisEvent)
+            identifier = event.eventIdentifier
+        } catch {
+            let alert = UIAlertController(title: "Error", message: "Calendar event could not be created!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        return identifier
     }
 }
 

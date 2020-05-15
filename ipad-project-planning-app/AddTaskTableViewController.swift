@@ -8,9 +8,11 @@
 
 import UIKit
 import CoreData
+import EventKit
 
 class AddTaskTableViewController: UITableViewController {
     
+    @IBOutlet weak var addToCalendarSwitch: UISwitch!
     var tasks: [NSManagedObject] = []
     var projectNum: Int? = nil
     var maxDate: Date? = nil
@@ -56,8 +58,48 @@ class AddTaskTableViewController: UITableViewController {
             print("Could not save. \(error), \(error.userInfo)")
         }
         
+        let eventStore = EKEventStore()
+        var calendarIdentifier = ""
+        
+        if addToCalendarSwitch.isOn {
+            if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
+                eventStore.requestAccess(to: .event, completion: {
+                    granted, error in
+                    calendarIdentifier = self.createEvent(eventStore, title: self.taskName.text!, startDate: Date(), endDate: self.dueDate.date)
+                })
+            } else {
+                calendarIdentifier = createEvent(eventStore, title: taskName.text!, startDate: Date(), endDate: dueDate.date)
+            }
+            
+            if calendarIdentifier != "" {
+                print("Added to calendaer")
+            }
+        }
+        
         dismiss(animated: true, completion: nil)
         delegate?.loadData()
+    }
+    
+    // Creates an event in the EKEventStore
+    func createEvent(_ eventStore: EKEventStore, title: String, startDate: Date, endDate: Date) -> String {
+        let event = EKEvent(eventStore: eventStore)
+        var identifier = ""
+        
+        event.title = title
+        event.startDate = startDate
+        event.endDate = endDate
+        event.calendar = eventStore.defaultCalendarForNewEvents
+        
+        do {
+            try eventStore.save(event, span: .thisEvent)
+            identifier = event.eventIdentifier
+        } catch {
+            let alert = UIAlertController(title: "Error", message: "Calendar event could not be created!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        return identifier
     }
 }
 
