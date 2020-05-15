@@ -20,6 +20,7 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
     
     @IBOutlet weak var moduleName: UITextField!
     
+    @IBOutlet weak var level: UITextField!
     @IBOutlet weak var value: UITextField!
     
     @IBOutlet weak var marks: UITextField!
@@ -54,6 +55,7 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
         project.setValue(name, forKeyPath: "name")
         project.setValue(note, forKeyPath: "note")
         project.setValue(date, forKeyPath: "date")
+        project.setValue(level.text, forKey: "level")
         project.setValue(moduleName.text, forKey: "moduleName")
         project.setValue(Date(), forKeyPath: "startDate")
         

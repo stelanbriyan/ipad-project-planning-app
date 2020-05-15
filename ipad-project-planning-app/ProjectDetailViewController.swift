@@ -48,7 +48,7 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         let daysRemainingCount = self.dateUtils.getDateDiff(Date(), end: dueDate as! Date)
 
         DispatchQueue.main.async {
-            let colours = self.colours.getProgressGradient(daysRemaining)
+            let colours = self.colours.getProgressGradient(daysRemaining, negative: true)
             self.dayProgress?.customTitle = "\(daysRemainingCount)"
             self.dayProgress?.customSubtitle = "Days Left"
             self.dayProgress?.startGradientColor = colours[0]
@@ -189,7 +189,7 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         let daysRemaining = self.dateUtils.getRemainingTimePercentage(startDate! as! Date, end: dueDate! as! Date)
        
         DispatchQueue.main.async {
-            let colours = self.colours.getProgressGradient(daysRemaining)
+            let colours = self.colours.getProgressGradient(daysRemaining, negative: true)
             cell.circleProgress?.customTitle = "\(daysRemaining)%"
             cell.circleProgress?.customSubtitle = ""
             cell.circleProgress?.startGradientColor = colours[0]
