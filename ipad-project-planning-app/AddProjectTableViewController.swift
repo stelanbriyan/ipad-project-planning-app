@@ -40,11 +40,15 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
             moduleName.text = project?.value(forKey: "moduleName") as? String
             level.text = project?.value(forKey: "level") as? String
             
-            let val = project?.value(forKey: "value") as! Int
-            value.text = String(val)
+            let val = project?.value(forKey: "value")
+            if val != nil {
+                value.text = String(val as! Int)
+            }
             
-            let mark = project?.value(forKey: "mark") as! Int
-            marks.text = String(mark)
+            let mark = project?.value(forKey: "mark")
+            if mark != nil {
+                marks.text = String(mark as! Int)
+            }
             print(project)
         }
         
