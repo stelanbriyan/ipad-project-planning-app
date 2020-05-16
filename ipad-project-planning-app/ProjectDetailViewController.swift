@@ -213,14 +213,19 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
             let controller = (segue.destination as! UINavigationController).topViewController as! AddTaskTableViewController
             controller.projectNum = self.project?.value(forKey: "projectNum") as? Int
             controller.delegate = self
-            controller.maxDate = project?.value(forKey: "date") as! Date
+            controller.maxDate = project?.value(forKey: "date") as? Date
         }
         
         if segue.identifier == "EditTaskPop" {
-            let controller = (segue.destination as! UINavigationController).topViewController as! AddTaskTableViewController
-            controller.projectNum = self.project?.value(forKey: "projectNum") as? Int
-            controller.delegate = self
-            controller.maxDate = project?.value(forKey: "date") as! Date
+            if let indexPath = taskTable.indexPathForSelectedRow {
+                let task = tasks[taskTable.indexPathForSelectedRow!.row]
+                let controller = (segue.destination as! UINavigationController).topViewController as! AddTaskTableViewController
+                controller.projectNum = self.project?.value(forKey: "projectNum") as? Int
+                controller.delegate = self
+                controller.maxDate = project?.value(forKey: "date") as? Date
+                controller.task = task as! NSManagedObject
+                controller.editingMode = true
+            }
         }
     }
     

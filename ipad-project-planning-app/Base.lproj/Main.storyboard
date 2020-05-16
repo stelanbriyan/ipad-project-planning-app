@@ -489,18 +489,29 @@
                     </view>
                     <navigationItem key="navigationItem" title="Project Details" id="rF0-x9-us8">
                         <barButtonItem key="leftBarButtonItem" title="Add Task" style="plain" id="ydo-Cb-sNb">
+                            <color key="tintColor" red="0.0" green="0.25863321210000001" blue="0.96848052740000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <segue destination="9K2-2f-0wV" kind="popoverPresentation" identifier="AddTaskPop" popoverAnchorBarButtonItem="ydo-Cb-sNb" id="V6b-Du-wnO">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="trash" catalog="system" style="plain" id="mR8-SJ-L7z">
-                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="removeTask:" destination="r4E-TW-CeB" id="xSY-EN-8mv"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="trash" catalog="system" style="plain" id="mR8-SJ-L7z">
+                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="removeTask:" destination="r4E-TW-CeB" id="xSY-EN-8mv"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="ibb-Gz-0JC">
+                                <color key="tintColor" red="0.0" green="0.25863321210000001" blue="0.96848052740000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <segue destination="9K2-2f-0wV" kind="popoverPresentation" identifier="EditTaskPop" popoverAnchorBarButtonItem="ibb-Gz-0JC" id="rbt-9V-AZ2">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="completeProgress" destination="yb9-LE-etz" id="BQA-YG-0kr"/>
@@ -660,6 +671,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="rbt-9V-AZ2"/>
         <segue reference="VmB-bi-XtE"/>
         <segue reference="rcd-oW-NLd"/>
     </inferredMetricsTieBreakers>

@@ -24,8 +24,18 @@ class AddTaskTableViewController: UITableViewController {
     @IBOutlet weak var dueDate: UIDatePicker!
     @IBOutlet weak var notificationSpinner: UISlider!
     
+    var editingMode: Bool = false
+    var task : NSManagedObject? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(editingMode){
+            title = "Edit Task"
+            taskName.text = task?.value(forKey: "name") as? String
+            taskNote.text = task?.value(forKey: "note") as? String
+            dueDate.date = (task?.value(forKey: "date") as? Date)!
+        }
         
         dueDate.minimumDate = NSDate() as Date
         dueDate.maximumDate = maxDate
@@ -42,14 +52,20 @@ class AddTaskTableViewController: UITableViewController {
         
         let entity = NSEntityDescription.entity(forEntityName: "Task", in: managedContext)!
         
-        let task = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        let task : NSManagedObject
+        if editingMode {
+            task = self.task!
+        }else{
+            task =  NSManagedObject(entity: entity, insertInto: managedContext)
+            task.setValue(projectNum, forKey: "projectNum")
+        }
         
         task.setValue(taskName.text, forKey: "name")
         task.setValue(taskNote.text, forKey: "note")
         task.setValue(dueDate.date, forKey: "date")
         task.setValue(Date(), forKey: "startDate")
         task.setValue(notificationSpinner.value, forKey: "notify")
-        task.setValue(projectNum, forKey: "projectNum")
         
         do {
             try managedContext.save()

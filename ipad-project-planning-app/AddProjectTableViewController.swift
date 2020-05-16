@@ -49,7 +49,6 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
             if mark != nil {
                 marks.text = String(mark as! Int)
             }
-            print(project)
         }
         
         projectDate.minimumDate = NSDate() as Date
