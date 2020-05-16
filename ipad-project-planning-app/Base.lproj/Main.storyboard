@@ -68,18 +68,29 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="My Projects" id="At2-f6-tec">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="2DU-S5-oD7">
+                            <color key="tintColor" red="0.0" green="0.25863321210000001" blue="0.96848052740000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <segue destination="66U-GU-1Vz" kind="popoverPresentation" identifier="AddProjectPopup" popoverAnchorBarButtonItem="2DU-S5-oD7" id="Ie5-EX-YfJ">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="trash" id="pGj-9B-JwI">
-                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="deleteProject:" destination="9X7-9n-Po1" id="q4A-K5-64n"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" systemItem="trash" id="pGj-9B-JwI">
+                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="deleteProject:" destination="9X7-9n-Po1" id="q4A-K5-64n"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="7ib-hC-DaG">
+                                <color key="tintColor" red="0.0" green="0.25863321212804513" blue="0.96848052740097046" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <segue destination="66U-GU-1Vz" kind="popoverPresentation" identifier="EditProjectPopup" popoverAnchorBarButtonItem="7ib-hC-DaG" id="rcd-oW-NLd">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="4SQ-p7-o2d" kind="showDetail" identifier="showProject" id="VmB-bi-XtE"/>
@@ -115,7 +126,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Value ( % )" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3PZ-bP-YLx">
                                                     <rect key="frame" x="16" y="143" width="343" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uul-eL-2lT">
                                                     <rect key="frame" x="310" y="187" width="51" height="31"/>
@@ -650,8 +661,10 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="VmB-bi-XtE"/>
+        <segue reference="rcd-oW-NLd"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="square.and.pencil" catalog="system" width="128" height="118"/>
         <image name="trash" catalog="system" width="121" height="128"/>
     </resources>
 </document>

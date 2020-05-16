@@ -17,7 +17,7 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
     @IBOutlet weak var projectDate: UIDatePicker!
     @IBOutlet weak var projectDescription: UITextField!
     @IBOutlet weak var addToCalendarSwitch: UISwitch!
-    
+    var project : NSManagedObject? = nil
     @IBOutlet weak var moduleName: UITextField!
     
     @IBOutlet weak var level: UITextField!
@@ -25,16 +25,33 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
     
     @IBOutlet weak var marks: UITextField!
     
+    var editingMode: Bool = false
+    
     var mainDelegate: ViewProjectTableViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if(editingMode){
+            title = "Edit Project"
+            projectName.text = project?.value(forKey: "name") as? String
+            projectDate.date = project?.value(forKey: "date") as! Date
+            projectDescription.text = project?.value(forKey: "note") as? String
+            moduleName.text = project?.value(forKey: "moduleName") as? String
+            level.text = project?.value(forKey: "level") as? String
+            
+            let val = project?.value(forKey: "value") as! Int
+            value.text = String(val)
+            
+            let mark = project?.value(forKey: "mark") as! Int
+            marks.text = String(mark)
+            print(project)
+        }
+        
         projectDate.minimumDate = NSDate() as Date
     }
     
     @IBAction func save(_ sender: Any) {
-        
         let name =  projectName.text
         let note = projectDescription.text
         let date = projectDate.date
@@ -49,15 +66,20 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
         
         let entity = NSEntityDescription.entity(forEntityName: "Project", in: managedContext)!
         
-        let project = NSManagedObject(entity: entity, insertInto: managedContext)
+        let project: NSManagedObject
+        if(editingMode == false){
+            project = NSManagedObject(entity: entity, insertInto: managedContext)
+            project.setValue(Int64((Date().timeIntervalSince1970 * 1000.0).rounded()), forKey: "projectNum")
+            project.setValue(Date(), forKeyPath: "startDate")
+        }else{
+            project = self.project!
+        }
         
-        project.setValue(Int64((Date().timeIntervalSince1970 * 1000.0).rounded()), forKey: "projectNum")
         project.setValue(name, forKeyPath: "name")
         project.setValue(note, forKeyPath: "note")
         project.setValue(date, forKeyPath: "date")
         project.setValue(level.text, forKey: "level")
         project.setValue(moduleName.text, forKey: "moduleName")
-        project.setValue(Date(), forKeyPath: "startDate")
         
         let val = value.text!
         project.setValue(Int(val ), forKey: "value")

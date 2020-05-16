@@ -216,6 +216,12 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
             controller.maxDate = project?.value(forKey: "date") as! Date
         }
         
+        if segue.identifier == "EditTaskPop" {
+            let controller = (segue.destination as! UINavigationController).topViewController as! AddTaskTableViewController
+            controller.projectNum = self.project?.value(forKey: "projectNum") as? Int
+            controller.delegate = self
+            controller.maxDate = project?.value(forKey: "date") as! Date
+        }
     }
     
 }

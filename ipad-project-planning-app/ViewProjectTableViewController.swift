@@ -164,6 +164,16 @@ class ViewProjectTableViewController: UITableViewController, NSFetchedResultsCon
             controller.mainDelegate = self
         }
         
+        
+        if segue.identifier == "EditProjectPopup" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let project = projects[indexPath.row]
+                let controller = (segue.destination as! UINavigationController).topViewController as! AddProjectTableViewController
+                controller.mainDelegate = self
+                controller.project = project as? NSManagedObject
+                controller.editingMode = true
+            }
+        }
     }
     
 }
