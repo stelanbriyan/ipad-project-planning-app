@@ -59,12 +59,12 @@ class AddTaskTableViewController: UITableViewController {
         }else{
             task =  NSManagedObject(entity: entity, insertInto: managedContext)
             task.setValue(projectNum, forKey: "projectNum")
+            task.setValue(Date(), forKey: "startDate")
         }
         
         task.setValue(taskName.text, forKey: "name")
         task.setValue(taskNote.text, forKey: "note")
         task.setValue(dueDate.date, forKey: "date")
-        task.setValue(Date(), forKey: "startDate")
         task.setValue(notificationSpinner.value, forKey: "notify")
         
         do {
@@ -128,11 +128,11 @@ extension AddTaskTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1 && indexPath.row == 0 {
-            return 200.0
+            return 170.0
         }
         // Make Notes text view bigger: 80
         if indexPath.section == 0 && indexPath.row == 0 {
-            return 250.0
+            return 200.0
         }
         
         return 0

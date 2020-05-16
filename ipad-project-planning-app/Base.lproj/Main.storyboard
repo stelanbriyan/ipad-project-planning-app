@@ -322,36 +322,36 @@
                                 <rect key="frame" x="0.0" y="50" width="818.5" height="264"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yb9-LE-etz" customClass="CircularProgressBar" customModule="ipad_project_planning_app" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="20" width="200" height="200"/>
+                                        <rect key="frame" x="20" y="20" width="150" height="150"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="aKu-MH-f7p"/>
-                                            <constraint firstAttribute="height" constant="200" id="ptF-Mc-ATY"/>
+                                            <constraint firstAttribute="width" constant="150" id="aKu-MH-f7p"/>
+                                            <constraint firstAttribute="height" constant="150" id="ptF-Mc-ATY"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDz-Ns-PSi" customClass="CircularProgressBar" customModule="ipad_project_planning_app" customModuleProvider="target">
-                                        <rect key="frame" x="598.5" y="20" width="200" height="200"/>
+                                        <rect key="frame" x="648.5" y="20" width="150" height="150"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="ieA-Cx-1Pc"/>
-                                            <constraint firstAttribute="height" constant="200" id="jZB-tt-T2g"/>
+                                            <constraint firstAttribute="width" constant="150" id="ieA-Cx-1Pc"/>
+                                            <constraint firstAttribute="height" constant="150" id="jZB-tt-T2g"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNW-zS-VPF">
-                                        <rect key="frame" x="230" y="20" width="358.5" height="200"/>
+                                        <rect key="frame" x="180" y="20" width="458.5" height="170"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYy-SS-F5g">
-                                                <rect key="frame" x="10" y="41" width="338.5" height="36"/>
+                                                <rect key="frame" x="10" y="41" width="438.5" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3t-Rh-p4Q">
-                                                <rect key="frame" x="10" y="87" width="338.5" height="21"/>
+                                                <rect key="frame" x="10" y="87" width="438.5" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kei-LB-Rzc">
-                                                <rect key="frame" x="10" y="10" width="338.5" height="21"/>
+                                                <rect key="frame" x="10" y="10" width="438.5" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -367,9 +367,41 @@
                                             <constraint firstItem="Z3t-Rh-p4Q" firstAttribute="leading" secondItem="XNW-zS-VPF" secondAttribute="leading" constant="10" id="ixx-lr-K8h"/>
                                             <constraint firstAttribute="trailing" secondItem="zYy-SS-F5g" secondAttribute="trailing" constant="10" id="oRV-XA-IMa"/>
                                             <constraint firstItem="kei-LB-Rzc" firstAttribute="top" secondItem="XNW-zS-VPF" secondAttribute="top" constant="10" id="qri-23-Xza"/>
-                                            <constraint firstAttribute="height" constant="200" id="xuQ-cZ-8WG"/>
+                                            <constraint firstAttribute="height" constant="170" id="xuQ-cZ-8WG"/>
                                         </constraints>
                                     </view>
+                                    <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fhv-iw-TjD">
+                                        <rect key="frame" x="0.0" y="190" width="818" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <items>
+                                            <navigationItem title="My Tasks" id="u0I-kG-Bor">
+                                                <rightBarButtonItems>
+                                                    <barButtonItem title="Item" image="trash" catalog="system" style="plain" id="mR8-SJ-L7z">
+                                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <connections>
+                                                            <action selector="removeTask:" destination="r4E-TW-CeB" id="xSY-EN-8mv"/>
+                                                        </connections>
+                                                    </barButtonItem>
+                                                    <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="ibb-Gz-0JC">
+                                                        <color key="tintColor" red="0.0" green="0.25863321210000001" blue="0.96848052740000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <connections>
+                                                            <segue destination="9K2-2f-0wV" kind="popoverPresentation" identifier="EditTaskPop" popoverAnchorBarButtonItem="ibb-Gz-0JC" id="rbt-9V-AZ2">
+                                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                            </segue>
+                                                        </connections>
+                                                    </barButtonItem>
+                                                    <barButtonItem title="Add Task" image="plus" catalog="system" style="plain" id="ydo-Cb-sNb">
+                                                        <color key="tintColor" red="0.0" green="0.25863321210000001" blue="0.96848052740000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <connections>
+                                                            <segue destination="9K2-2f-0wV" kind="popoverPresentation" identifier="AddTaskPop" popoverAnchorBarButtonItem="ydo-Cb-sNb" id="V6b-Du-wnO">
+                                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                            </segue>
+                                                        </connections>
+                                                    </barButtonItem>
+                                                </rightBarButtonItems>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -487,32 +519,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IZh-fR-cM3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Project Details" id="rF0-x9-us8">
-                        <barButtonItem key="leftBarButtonItem" title="Add Task" style="plain" id="ydo-Cb-sNb">
-                            <color key="tintColor" red="0.0" green="0.25863321210000001" blue="0.96848052740000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <connections>
-                                <segue destination="9K2-2f-0wV" kind="popoverPresentation" identifier="AddTaskPop" popoverAnchorBarButtonItem="ydo-Cb-sNb" id="V6b-Du-wnO">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Item" image="trash" catalog="system" style="plain" id="mR8-SJ-L7z">
-                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="removeTask:" destination="r4E-TW-CeB" id="xSY-EN-8mv"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="square.and.pencil" catalog="system" style="plain" id="ibb-Gz-0JC">
-                                <color key="tintColor" red="0.0" green="0.25863321210000001" blue="0.96848052740000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <connections>
-                                    <segue destination="9K2-2f-0wV" kind="popoverPresentation" identifier="EditTaskPop" popoverAnchorBarButtonItem="ibb-Gz-0JC" id="rbt-9V-AZ2">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Project Details" id="rF0-x9-us8"/>
                     <connections>
                         <outlet property="completeProgress" destination="yb9-LE-etz" id="BQA-YG-0kr"/>
                         <outlet property="dayProgress" destination="wDz-Ns-PSi" id="UZ2-wV-0D1"/>
@@ -671,11 +678,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rbt-9V-AZ2"/>
+        <segue reference="V6b-Du-wnO"/>
         <segue reference="VmB-bi-XtE"/>
         <segue reference="rcd-oW-NLd"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
         <image name="trash" catalog="system" width="121" height="128"/>
     </resources>
