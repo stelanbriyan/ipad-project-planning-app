@@ -46,5 +46,4 @@ public class DateUtils{
         return Double(difference!)
     }
     
-    
 }

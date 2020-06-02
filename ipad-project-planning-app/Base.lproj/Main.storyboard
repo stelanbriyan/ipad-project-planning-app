@@ -356,17 +356,35 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84e-KQ-rgz">
+                                                <rect key="frame" x="10" y="113" width="438.5" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ir1-Cl-7lS">
+                                                <rect key="frame" x="10" y="139" width="438.5" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Z3t-Rh-p4Q" secondAttribute="trailing" constant="10" id="0XX-8F-3w5"/>
                                             <constraint firstItem="zYy-SS-F5g" firstAttribute="leading" secondItem="XNW-zS-VPF" secondAttribute="leading" constant="10" id="6XL-la-ZL1"/>
+                                            <constraint firstItem="ir1-Cl-7lS" firstAttribute="top" secondItem="84e-KQ-rgz" secondAttribute="bottom" constant="10" id="B9C-0N-BR0"/>
                                             <constraint firstItem="kei-LB-Rzc" firstAttribute="leading" secondItem="XNW-zS-VPF" secondAttribute="leading" constant="10" id="CtM-kX-DpJ"/>
+                                            <constraint firstItem="84e-KQ-rgz" firstAttribute="top" secondItem="Z3t-Rh-p4Q" secondAttribute="bottom" constant="5" id="FeT-IJ-wfj"/>
+                                            <constraint firstItem="ir1-Cl-7lS" firstAttribute="leading" secondItem="XNW-zS-VPF" secondAttribute="leading" constant="10" id="HmT-8G-Pts"/>
                                             <constraint firstItem="Z3t-Rh-p4Q" firstAttribute="top" secondItem="zYy-SS-F5g" secondAttribute="bottom" constant="10" id="M1h-4X-XYt"/>
                                             <constraint firstAttribute="trailing" secondItem="kei-LB-Rzc" secondAttribute="trailing" constant="10" id="PaS-Zb-yKx"/>
+                                            <constraint firstItem="84e-KQ-rgz" firstAttribute="leading" secondItem="XNW-zS-VPF" secondAttribute="leading" constant="10" id="QMi-oU-aGW"/>
                                             <constraint firstItem="zYy-SS-F5g" firstAttribute="top" secondItem="kei-LB-Rzc" secondAttribute="bottom" constant="10" id="X4g-5W-qCm"/>
+                                            <constraint firstAttribute="trailing" secondItem="ir1-Cl-7lS" secondAttribute="trailing" constant="10" id="XYp-A2-SRW"/>
                                             <constraint firstItem="Z3t-Rh-p4Q" firstAttribute="leading" secondItem="XNW-zS-VPF" secondAttribute="leading" constant="10" id="ixx-lr-K8h"/>
                                             <constraint firstAttribute="trailing" secondItem="zYy-SS-F5g" secondAttribute="trailing" constant="10" id="oRV-XA-IMa"/>
                                             <constraint firstItem="kei-LB-Rzc" firstAttribute="top" secondItem="XNW-zS-VPF" secondAttribute="top" constant="10" id="qri-23-Xza"/>
+                                            <constraint firstAttribute="trailing" secondItem="84e-KQ-rgz" secondAttribute="trailing" constant="10" id="vZh-9Y-pnz"/>
                                             <constraint firstAttribute="height" constant="170" id="xuQ-cZ-8WG"/>
                                         </constraints>
                                     </view>
@@ -522,8 +540,10 @@
                     <navigationItem key="navigationItem" title="Project Details" id="rF0-x9-us8"/>
                     <connections>
                         <outlet property="completeProgress" destination="yb9-LE-etz" id="BQA-YG-0kr"/>
+                        <outlet property="dateText" destination="84e-KQ-rgz" id="Nhe-pd-bor"/>
                         <outlet property="dayProgress" destination="wDz-Ns-PSi" id="UZ2-wV-0D1"/>
                         <outlet property="descField" destination="Z3t-Rh-p4Q" id="Weg-xQ-MHd"/>
+                        <outlet property="levelMarkText" destination="ir1-Cl-7lS" id="d4e-RA-wPt"/>
                         <outlet property="moduleName" destination="kei-LB-Rzc" id="bor-ze-h9z"/>
                         <outlet property="projectName" destination="zYy-SS-F5g" id="eFD-Xo-FgF"/>
                         <outlet property="taskTable" destination="gyF-7t-zhm" id="djP-Vo-DLI"/>

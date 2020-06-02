@@ -25,8 +25,10 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
     let colours: Colours = Colours()
     @IBOutlet weak var completeProgress: CircularProgressBar!
     
+    @IBOutlet weak var levelMarkText: UILabel!
     @IBOutlet weak var dayProgress: CircularProgressBar!
     
+    @IBOutlet weak var dateText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +46,24 @@ class ProjectDetailViewController: UIViewController, NSFetchedResultsControllerD
         let startDate = project?.value(forKey: "startDate")
         let dueDate = project?.value(forKey: "date")
         
+        let levelVal = project?.value(forKey: "level") as? String
+        if levelVal != nil {
+            levelMarkText.text = "Level: " + levelVal! ;
+        }else{
+            levelMarkText.text = "";
+        }
+        
+        let val = project?.value(forKey: "value")
+        if val != nil {
+            levelMarkText.text = levelMarkText.text! + "   Value: " + String(val as! Int)
+        }
+
+        let mark = project?.value(forKey: "mark")
+        if mark != nil {
+            levelMarkText.text = levelMarkText.text! + "   Mark: " + String(mark as! Int)
+        }
+        
+        dateText.text = "Start: " + dateFormatter.string(from: startDate as! Date) + " & Due: " + dateFormatter.string(from: dueDate as! Date)
         let daysRemaining = self.dateUtils.getRemainingTimePercentage(startDate! as! Date, end: dueDate! as! Date)
         let daysRemainingCount = self.dateUtils.getDateDiff(Date(), end: dueDate as! Date)
 
