@@ -140,10 +140,12 @@ class ViewProjectTableViewController: UITableViewController, NSFetchedResultsCon
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
-        if tableView.indexPathForSelectedRow != nil {
-            let project = projects[indexPath.row]
-            self.performSegue(withIdentifier: "showProject", sender: project)
+        if  projects.count > 0 {
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
+            if tableView.indexPathForSelectedRow != nil {
+                let project = projects[indexPath.row]
+                self.performSegue(withIdentifier: "showProject", sender: project)
+            }
         }
     }
     
