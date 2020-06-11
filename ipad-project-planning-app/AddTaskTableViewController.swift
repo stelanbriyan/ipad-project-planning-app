@@ -18,6 +18,7 @@ class AddTaskTableViewController: UITableViewController {
     var maxDate: Date? = nil
     var delegate: ProjectDetailViewController? = nil
     
+    @IBOutlet weak var completedLabel: UILabel!
     @IBOutlet weak var taskName: UITextField!
     @IBOutlet weak var taskNote: UITextField!
     
@@ -39,6 +40,11 @@ class AddTaskTableViewController: UITableViewController {
         
         dueDate.minimumDate = NSDate() as Date
         dueDate.maximumDate = maxDate
+    }
+    
+    @IBAction func spinnerProgress(_ sender: UISlider) {
+        let currentValue = Int(sender.value)
+        completedLabel.text = String(currentValue) + "% complete"
     }
     
     @IBAction func saveTask(_ sender: Any) {
@@ -128,11 +134,11 @@ extension AddTaskTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1 && indexPath.row == 0 {
-            return 170.0
+            return 170
         }
         // Make Notes text view bigger: 80
         if indexPath.section == 0 && indexPath.row == 0 {
-            return 200.0
+            return 230.0
         }
         
         return 0

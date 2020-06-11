@@ -582,9 +582,12 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="70" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YUQ-HJ-GGZ">
-                                                    <rect key="frame" x="-2" y="170" width="379" height="31"/>
+                                                    <rect key="frame" x="-2" y="160" width="379" height="31"/>
                                                     <color key="minimumTrackTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="maximumTrackTintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="maximumTrackTintColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="spinnerProgress:" destination="26v-TG-SgW" eventType="valueChanged" id="AkI-qX-oOQ"/>
+                                                    </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjQ-TF-fHO">
                                                     <rect key="frame" x="16" y="119" width="294" height="21"/>
@@ -595,17 +598,26 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zaf-Dn-p1g">
                                                     <rect key="frame" x="310" y="119" width="51" height="31"/>
                                                 </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70% Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rm8-wz-hxc">
+                                                    <rect key="frame" x="10" y="200" width="355" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
+                                                <constraint firstItem="rm8-wz-hxc" firstAttribute="top" secondItem="YUQ-HJ-GGZ" secondAttribute="bottom" constant="10" id="0JU-cb-eiA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="pPE-nF-SyU" secondAttribute="trailing" id="18M-qj-NKo"/>
+                                                <constraint firstAttribute="trailing" secondItem="rm8-wz-hxc" secondAttribute="trailing" constant="10" id="BXd-HL-hhV"/>
                                                 <constraint firstItem="XjQ-TF-fHO" firstAttribute="top" secondItem="V4l-In-dIE" secondAttribute="bottom" constant="20" id="E0D-sy-dEm"/>
                                                 <constraint firstItem="XjQ-TF-fHO" firstAttribute="leading" secondItem="tIf-5o-sY1" secondAttribute="leadingMargin" id="ErD-gW-1IK"/>
                                                 <constraint firstItem="V4l-In-dIE" firstAttribute="leading" secondItem="tIf-5o-sY1" secondAttribute="leadingMargin" id="Gg0-o3-wrU"/>
                                                 <constraint firstItem="pPE-nF-SyU" firstAttribute="leading" secondItem="tIf-5o-sY1" secondAttribute="leadingMargin" id="Mto-DU-5I3"/>
-                                                <constraint firstItem="YUQ-HJ-GGZ" firstAttribute="top" secondItem="zaf-Dn-p1g" secondAttribute="bottom" constant="20" id="PdO-yM-sjz"/>
+                                                <constraint firstItem="YUQ-HJ-GGZ" firstAttribute="top" secondItem="zaf-Dn-p1g" secondAttribute="bottom" constant="10" id="PdO-yM-sjz"/>
                                                 <constraint firstItem="V4l-In-dIE" firstAttribute="top" secondItem="pPE-nF-SyU" secondAttribute="bottom" constant="10" id="Pda-qR-EM9"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="zaf-Dn-p1g" secondAttribute="trailing" id="Q6h-lx-RwB"/>
+                                                <constraint firstItem="rm8-wz-hxc" firstAttribute="leading" secondItem="tIf-5o-sY1" secondAttribute="leading" constant="10" id="STE-XT-FOt"/>
                                                 <constraint firstItem="zaf-Dn-p1g" firstAttribute="top" secondItem="V4l-In-dIE" secondAttribute="bottom" constant="20" id="XDN-sS-6BN"/>
                                                 <constraint firstItem="zaf-Dn-p1g" firstAttribute="leading" secondItem="XjQ-TF-fHO" secondAttribute="trailing" id="Yrf-Rl-ocE"/>
                                                 <constraint firstItem="YUQ-HJ-GGZ" firstAttribute="leading" secondItem="tIf-5o-sY1" secondAttribute="leading" id="c0j-VQ-MSa"/>
@@ -657,6 +669,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addToCalendarSwitch" destination="zaf-Dn-p1g" id="8xm-fM-PPQ"/>
+                        <outlet property="completedLabel" destination="rm8-wz-hxc" id="4Uv-5P-YPv"/>
                         <outlet property="dueDate" destination="ZQT-vZ-BVs" id="d85-Dd-hLi"/>
                         <outlet property="notificationSpinner" destination="YUQ-HJ-GGZ" id="dHy-R6-QJu"/>
                         <outlet property="taskName" destination="pPE-nF-SyU" id="2Vs-zC-6bt"/>
