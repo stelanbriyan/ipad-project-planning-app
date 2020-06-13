@@ -102,6 +102,10 @@ class AddTaskTableViewController: UITableViewController {
         delegate?.loadData()
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // Creates an event in the EKEventStore
     func createEvent(_ eventStore: EKEventStore, title: String, startDate: Date, endDate: Date) -> String {
         let event = EKEvent(eventStore: eventStore)
@@ -134,7 +138,7 @@ extension AddTaskTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1 && indexPath.row == 0 {
-            return 170
+            return 150
         }
         // Make Notes text view bigger: 80
         if indexPath.section == 0 && indexPath.row == 0 {

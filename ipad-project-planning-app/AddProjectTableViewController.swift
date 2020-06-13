@@ -55,68 +55,123 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
     }
     
     @IBAction func save(_ sender: Any) {
-        let name =  projectName.text
-        let note = projectDescription.text
-        let date = projectDate.date
+        var validation: Bool = true
         
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-          appDelegate.persistentContainer.viewContext
-        
-        let entity = NSEntityDescription.entity(forEntityName: "Project", in: managedContext)!
-        
-        let project: NSManagedObject
-        if(editingMode == false){
-            project = NSManagedObject(entity: entity, insertInto: managedContext)
-            project.setValue(Int64((Date().timeIntervalSince1970 * 1000.0).rounded()), forKey: "projectNum")
-            project.setValue(Date(), forKeyPath: "startDate")
-        }else{
-            project = self.project!
-        }
-        
-        project.setValue(name, forKeyPath: "name")
-        project.setValue(note, forKeyPath: "note")
-        project.setValue(date, forKeyPath: "date")
-        project.setValue(level.text, forKey: "level")
-        project.setValue(moduleName.text, forKey: "moduleName")
-        
-        let val = value.text!
-        project.setValue(Int(val ), forKey: "value")
-        project.setValue(Int(marks.text ?? "0"), forKey: "mark")
-        
-        do {
-            try managedContext.save()
-            projects.append(project)
-        } catch let error as NSError {
-          print("Could not save. \(error), \(error.userInfo)")
-        }
-        
-        let eventStore = EKEventStore()
-        var calendarIdentifier = ""
-        
-        if addToCalendarSwitch.isOn {
-            if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
-                eventStore.requestAccess(to: .event, completion: {
-                    granted, error in
-                    calendarIdentifier = self.createEvent(eventStore, title: name!, startDate: Date(), endDate: date)
-                })
+        if let input = level.text {
+            if input.isEmpty {
+                validation = false
+                level.showErr()
             } else {
-                calendarIdentifier = createEvent(eventStore, title: name!, startDate: Date(), endDate: date)
+                if let value = Int(input as String) {
+                    if value > 0 && value < 7 {
+                        level.success()
+                    }else {
+                        level.showErr()
+                        validation = false
+                    }
+                }else{
+                    validation = false
+                    level.showErr()
+                }
+            }
+        }else{
+            validation = false
+            level.showErr()
+        }
+        
+        if let input = marks.text {
+            if input.isEmpty {
+                validation = false
+                marks.showErr()
+            } else {
+                if let value = Int(input as String) {
+                    if value >= 0 && value <= 100 {
+                        marks.success()
+                    }else {
+                        marks.showErr()
+                        validation = false
+                    }
+                }else{
+                    validation = false
+                    marks.showErr()
+                }
+            }
+        }else{
+            validation = false
+            marks.showErr()
+        }
+        
+        if projectName.text!.isEmpty {
+            projectName.showErr()
+        }else{
+            projectName.success()
+        }
+        
+        if validation {
+            let name = projectName.text
+            let note = projectDescription.text
+            let date = projectDate.date
+            
+            guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return
             }
             
-            if calendarIdentifier != "" {
-                print("Added to calendaer")
+            let managedContext =
+                appDelegate.persistentContainer.viewContext
+            
+            let entity = NSEntityDescription.entity(forEntityName: "Project", in: managedContext)!
+            
+            let project: NSManagedObject
+            if(editingMode == false){
+                project = NSManagedObject(entity: entity, insertInto: managedContext)
+                project.setValue(Int64((Date().timeIntervalSince1970 * 1000.0).rounded()), forKey: "projectNum")
+                project.setValue(Date(), forKeyPath: "startDate")
+            }else{
+                project = self.project!
             }
+            
+            project.setValue(name, forKeyPath: "name")
+            project.setValue(note, forKeyPath: "note")
+            project.setValue(date, forKeyPath: "date")
+            project.setValue(level.text, forKey: "level")
+            project.setValue(moduleName.text, forKey: "moduleName")
+            
+            let val = value.text!
+            project.setValue(Int(val ), forKey: "value")
+            project.setValue(Int(marks.text ?? "0"), forKey: "mark")
+            
+            do {
+                try managedContext.save()
+                projects.append(project)
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            
+            let eventStore = EKEventStore()
+            var calendarIdentifier = ""
+            
+            if addToCalendarSwitch.isOn {
+                if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
+                    eventStore.requestAccess(to: .event, completion: {
+                        granted, error in
+                        calendarIdentifier = self.createEvent(eventStore, title: name!, startDate: Date(), endDate: date)
+                    })
+                } else {
+                    calendarIdentifier = createEvent(eventStore, title: name!, startDate: Date(), endDate: date)
+                }
+                
+                if calendarIdentifier != "" {
+                    print("Added to calendaer")
+                }
+            }
+            
+            dismiss(animated: true, completion: nil)
+            
+            mainDelegate?.loadData()
+        }else{
+            print("errr")
         }
-        
-        dismiss(animated: true, completion: nil)
-        
-        mainDelegate?.loadData()
-
     }
     
     // Creates an event in the EKEventStore
@@ -139,6 +194,10 @@ class AddProjectTableViewController: UITableViewController, UIPopoverPresentatio
         }
         
         return identifier
+    }
+    
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -165,4 +224,16 @@ extension AddProjectTableViewController {
         return 0
     }
     
+}
+
+extension UIView{
+    func showErr(){
+        self.layer.borderColor = UIColor.red.cgColor
+        self.layer.borderWidth = 2
+    }
+    
+    func success() {
+        self.layer.borderColor = UIColor.lightText.cgColor
+        self.layer.borderWidth = 0
+    }
 }

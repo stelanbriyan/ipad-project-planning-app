@@ -239,7 +239,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Project" id="912-rp-vEo">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="6MS-Lj-SXh"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="6MS-Lj-SXh">
+                            <connections>
+                                <action selector="cancel:" destination="a44-6L-sMt" id="2pg-bx-fo9"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="ZC8-qf-RQd">
                             <connections>
                                 <action selector="save:" destination="a44-6L-sMt" id="QTp-Al-nsu"/>
@@ -581,7 +585,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="70" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YUQ-HJ-GGZ">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YUQ-HJ-GGZ">
                                                     <rect key="frame" x="-2" y="160" width="379" height="31"/>
                                                     <color key="minimumTrackTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="maximumTrackTintColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -598,7 +602,7 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zaf-Dn-p1g">
                                                     <rect key="frame" x="310" y="119" width="51" height="31"/>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70% Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rm8-wz-hxc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80% Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rm8-wz-hxc">
                                                     <rect key="frame" x="10" y="200" width="355" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -660,7 +664,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Task" id="Inq-O3-hHB">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="2th-N6-DFc"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="2th-N6-DFc">
+                            <connections>
+                                <action selector="cancel:" destination="26v-TG-SgW" id="V2l-7i-7yp"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="rCK-Zc-n7l">
                             <connections>
                                 <action selector="saveTask:" destination="26v-TG-SgW" id="7lU-6k-jPZ"/>
